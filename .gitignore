@@ -1,2 +1,3 @@
 /.DS_Store
 /volumental-frontend-challenge.zip
+**/node_modules
