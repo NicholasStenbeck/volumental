@@ -116,11 +116,6 @@ export const FeetScanPlaceholder: React.FC<FeetScanPlaceholderProps> = (
         0,
         Math.min(rootElement.offsetWidth, event.touches[0].pageX)
       );
-      /**
-       * Expressed the slider position in percent instead, so that it can stay in
-       * roughly the same position when the window is resized. This also removes
-       * the need to use a resize listener.
-       */
       currentSlider.style.left = `${
         ((sliderPos - currentSlider.offsetWidth / 2) / container.offsetWidth ??
           1) * 100
@@ -145,6 +140,9 @@ export const FeetScanPlaceholder: React.FC<FeetScanPlaceholderProps> = (
       currentSlider.removeEventListener("mousedown", onMouseDown);
       rootElement.removeEventListener("mousemove", onMouseMove);
       rootElement.removeEventListener("mouseup", onMouseUp);
+      currentSlider.removeEventListener("touchstart", onTouchStart);
+      rootElement.removeEventListener("touchmove", onTouchMove);
+      rootElement.removeEventListener("touchend", onTouchEnd);
     };
   }, [props]);
 
